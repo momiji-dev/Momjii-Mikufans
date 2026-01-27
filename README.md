@@ -1,0 +1,2 @@
+# Momjii-Mikufans
+momjii是一个基于Rust的论坛程序 该项目为MIKUFANS的momjii特供公开版本，旨在为MikuFans社区提供的定制版本，为论坛提供基本雏形。 我们意旨在此基础上建立MIKUFANS社区
