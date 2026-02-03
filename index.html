@@ -1,0 +1,1109 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIKUFANS-ロ⊂(゜ ▽゜ )-乾杯</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- GSAP 动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- 阿里妈妈数黑体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<!-- 在 HTML 的 <head> 部分添加以下代码 -->
+<link rel="icon" 
+      href="https://p11-doubao-search-sign.byteimg.com/labis/e0080e80517bb16064d5f612ea097fbb~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1785622000&x-signature=Mc%2F5LJXEiGfFmREpt1VeFuKqBf4%3D" 
+      type="image/jpeg">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#39C5BB',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 0 10px rgba(57, 197, 187, 0.5), 0 0 20px rgba(57, 197, 187, 0.3);
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(90deg, #39C5BB, #39C5BB);
+            }
+            .bg-blur {
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+            }
+            .border-glow {
+                box-shadow: 0 0 5px rgba(57, 197, 187, 0.5), 0 0 10px rgba(57, 197, 187, 0.3);
+            }
+            .cursor-follower {
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: rgba(57, 197, 187, 0.5);
+                transform: translate(-50%, -50%);
+                transition: width 0.3s, height 0.3s, opacity 0.3s;
+            }
+        }
+        
+        /* 自定义样式 */
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* 樱花飘落特效 */
+        .sakura {
+            position: fixed;
+            top: -10%;
+            z-index: 9;
+            animation: fall linear forwards;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+
+        
+        .bg-switcher {
+            transition: background-image 1s ease-in-out, background-color 1s ease-in-out;
+        }
+        
+        .title-animation span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .line {
+            position: absolute;
+            background-color: rgba(57, 197, 187, 0.5);
+            transform-origin: 0 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        /* 二次元风格粒子 */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(57, 197, 187, 0.7);
+            pointer-events: none;
+            z-index: 5;
+            box-shadow: 0 0 10px rgba(57, 197, 187, 0.8);
+        }
+        
+        /* 二次元风格网格 */
+        .anime-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(57, 197, 187, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(57, 197, 187, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+        
+        /* 二次元风格光晕 */
+        .anime-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(57, 197, 187, 0.3) 0%, rgba(57, 197, 187, 0) 70%);
+            pointer-events: none;
+            z-index: 5;
+            animation: glowPulse 4s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0.2;
+            }
+        }
+        
+        /* 二次元风格几何图形 */
+        .anime-shape {
+            position: absolute;
+            background-color: rgba(57, 197, 187, 0.2);
+            border: 1px solid rgba(57, 197, 187, 0.5);
+            pointer-events: none;
+            z-index: 5;
+            animation: shapeFloat 15s ease-in-out infinite;
+        }
+        
+        @keyframes shapeFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+            }
+            75% {
+                transform: translateY(20px) rotate(270deg);
+            }
+        }
+        
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-hover-effect:hover::before {
+            left: 100%;
+        }
+        
+        .btn-hover-effect:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- 鼠标跟随线条容器 -->
+    <div id="lines-container"></div>
+    
+    <!--miku元素容器 -->
+    <div id="anime-elements" class="fixed inset-0 z-1"></div>
+    
+    <!-- 弹幕容器 -->
+    <div id="danmaku-container" class="fixed inset-0 pointer-events-none z-20 overflow-hidden"></div>
+    
+    <!-- 樱花飘落容器 -->
+    <div id="sakura-container" class="fixed inset-0 pointer-events-none z-5"></div>
+    
+
+    
+    <!-- 弹幕设置后门 (隐藏) -->
+    <div id="danmaku-settings" class="fixed inset-0 bg-dark bg-opacity-90 z-50 hidden flex items-center justify-center">
+        <div class="bg-dark border border-primary border-opacity-50 rounded-lg p-6 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-white">弹幕设置</h3>
+                <button id="close-danmaku-settings" class="text-white hover:text-primary">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white mb-2">添加弹幕内容:</label>
+                <input type="text" id="danmaku-input" class="w-full px-3 py-2 bg-dark bg-opacity-50 border border-primary border-opacity-50 rounded text-white" placeholder="输入弹幕内容">
+                <button id="add-danmaku" class="mt-2 px-4 py-2 bg-primary text-white rounded">添加</button>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white mb-2">弹幕列表:</label>
+                <textarea id="danmaku-list" class="w-full px-3 py-2 bg-dark bg-opacity-50 border border-primary border-opacity-50 rounded text-white h-32" placeholder="每行一条弹幕内容"></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white mb-2">弹幕速度:</label>
+                <input type="range" id="danmaku-speed" min="5" max="20" value="10" class="w-full">
+                <div class="flex justify-between text-white text-sm">
+                    <span>慢</span>
+                    <span>快</span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white mb-2">弹幕密度:</label>
+                <input type="range" id="danmaku-density" min="1" max="10" value="5" class="w-full">
+                <div class="flex justify-between text-white text-sm">
+                    <span>疏</span>
+                    <span>密</span>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white mb-2">自定义背景图:</label>
+                <input type="text" id="custom-bg-input" class="w-full px-3 py-2 bg-dark bg-opacity-50 border border-primary border-opacity-50 rounded text-white" placeholder="输入图片URL">
+                <button id="set-custom-bg" class="mt-2 px-4 py-2 bg-primary text-white rounded">设置背景</button>
+            </div>
+            <div class="flex justify-end">
+                <button id="save-danmaku-settings" class="px-4 py-2 bg-primary text-white rounded mr-2">保存设置</button>
+                <button id="reset-danmaku" class="px-4 py-2 bg-dark border border-white border-opacity-50 text-white rounded">重置</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 背景切换器 -->
+    <div id="bg-switcher" class="fixed inset-0 bg-switcher bg-gradient-to-br from-[#39C5BB] to-bule-200 z-0"></div>
+    
+    <!-- 主容器 -->
+    <div class="relative min-h-screen flex flex-col z-10">
+        <!-- 导航栏 -->
+        <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center bg-dark bg-opacity-30 bg-blur">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/5451cc2328514bb5bf1dc8677a9ed286~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=2026020303073241BF2D5D8DC53641E339&amp;rrcfp=e75484ac&amp;x-expires=1770664052&amp;x-signature=ypMeKry7PhjNwxjhI9WMl8Dsrtg%3D" alt="Logo" class="h-20 w-20 object-contain">
+            </div>
+            
+
+        </header>
+        
+        <!-- 主内容区 -->
+        <main class="flex-grow flex flex-col items-center justify-center px-6 md:px-12 py-12">
+            <!-- 标题文字 -->
+            <div id="main-text" class="title-animation mb-8 text-center z-20 relative">
+                <h1 class="text-4xl md:text-6xl font-bold text-white text-shadow" style="font-family: 'Alimama ShuHei Ti', sans-serif;">
+                    MIKUFANS-ロ⊂(゜ ▽゜ )-乾杯！
+                </h1>
+            </div>
+            
+            <!-- Logo -->
+            <div id="main-logo" class="title-animation mb-12 flex justify-center">
+                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/214befb370754bc08327315c44c12ff6~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260203032410B4B1E224AD54444209B0&amp;rrcfp=e75484ac&amp;x-expires=1770665051&amp;x-signature=IKp7x57I117KdyTBlxzG22O4FtU%3D" alt="mikufanslogo" class="w-full max-w-3xl h-auto max-h-[50vh] object-contain rounded-lg shadow-xl border border-primary border-opacity-30">
+            </div>
+            
+            <!-- 按钮组 -->
+            <div class="flex flex-col items-center gap-4 md:gap-6">
+                <!-- 第一行按钮 -->
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                    <a href="https://x.miku.today" target="_blank" class="btn-hover-effect px-8 py-3 bg-primary bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-home mr-2"></i>进入MikuX
+                    </a>
+                    <a href="www.mikufans.com.cn/about" target="_blank" class="btn-hover-effect px-8 py-3 bg-secondary bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-info-circle mr-2"></i>关于
+                    </a>
+                    <a href="https://qm.qq.com/q/sz4BS7Z6P8" target="_blank" class="btn-hover-effect px-8 py-3 bg-accent bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-envelope mr-2"></i>联系
+                    </a>
+                    <a href="https://github.com/momiji-dev" target="_blank" class="btn-hover-effect px-8 py-3 bg-dark bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-github mr-2"></i>项目
+                    </a>
+                </div>
+                <!-- 第二行按钮 -->
+                <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                    <a href="https://pd.qq.com/s/6yt94veu4" target="_blank" class="btn-hover-effect px-8 py-3 bg-[#12B7F5] bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-comments mr-2"></i>QQ频道
+                    </a>
+                    <a href="https://tieba.baidu.com/f?kw=mikufans" target="_blank" class="btn-hover-effect px-8 py-3 bg-[#0084FF] bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-paw mr-2"></i>百度贴吧
+                    </a>
+                    <a href="https://space.bilibili.com/9999963" target="_blank" class="btn-hover-effect px-8 py-3 bg-[#FB7299] bg-opacity-80 hover:bg-opacity-100 text-white font-medium rounded-lg border-glow transition-all">
+                        <i class="fa fa-video-camera mr-2"></i>哔哩哔哩
+                </a>
+            </div>
+        </main>
+        
+        <!-- 页脚 -->
+        <footer class="w-full py-6 px-6 md:px-12 text-center text-white bg-dark bg-opacity-30 bg-blur">
+            <p>© 2026 MIKUFANS-ロ⊂(゜ ▽゜ )-乾杯！| 版权所有by<a href="https://space.bilibili.com/70208" target="_blank" class="text-primary hover:underline">@MewtyAlnitak</a></p>
+            <p class="mt-2">⑨Mew的另一个科幻文学社区 <a href="https://www.sci-fifans.net" target="_blank" class="text-primary hover:underline">SciFifans</a></p>
+            <div class="flex justify-center space-x-4 mt-3">
+                <a href="#" class="text-white hover:text-primary transition-colors">
+                    <i class="fa fa-music"></i>
+                </a>
+                <a href="#" class="text-white hover:text-primary transition-colors">
+                    <i class="fa fa-book"></i>
+                </a>
+                <a href="#" class="text-white hover:text-primary transition-colors">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white hover:text-primary transition-colors">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 背景图片数组
+        const backgrounds = [
+            'url()', // 初音未来星空背景
+            'url()', // 初音未来城市背景
+            'url()', // 初音未来天空背景
+            //'linear-gradient(to bottom right, #39C5BB, #60A5FA)', // 主题色渐变
+            'url()', // 初音未来樱花背景
+            'url()', // 初音未来科技感背景
+            //'linear-gradient(to bottom right, #66CCFF, #39C5BB)', // 紫色渐变
+            'url()', // 初音未来几何背景
+            //'linear-gradient(to bottom right, #39C5BB, #66CCFF)', // 主题色与紫色渐变
+        ];
+        
+        // 当前背景索引
+        let currentBgIndex = 0;
+        const bgSwitcher = document.getElementById('bg-switcher');
+        
+        // 背景切换函数
+        function switchBackground(index) {
+            if (index >= 0 && index < backgrounds.length) {
+                currentBgIndex = index;
+            } else {
+                currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+            }
+            
+            const bg = backgrounds[currentBgIndex];
+            if (bg.startsWith('url')) {
+                bgSwitcher.style.backgroundImage = bg;
+                bgSwitcher.style.backgroundSize = 'cover';
+                bgSwitcher.style.backgroundPosition = 'center';
+            } else {
+                bgSwitcher.style.backgroundImage = 'none';
+                bgSwitcher.style.background = bg;
+            }
+        }
+        
+
+        
+        // 自动切换背景
+        setInterval(switchBackground, 10000);
+        
+        // 标题和Logo动画
+        function animateTitle() {
+            // 标题文字动画 - 打字效果
+            const text = document.getElementById('main-text');
+            const textContent = text.querySelector('h1').textContent;
+            text.querySelector('h1').textContent = '';
+            
+            // 创建SSH端口打字效果
+            let i = 0;
+            const typeWriter = () => {
+                if (i < textContent.length) {
+                    const char = document.createElement('span');
+                    char.textContent = textContent.charAt(i);
+                    char.style.display = 'inline-block';
+                    char.style.opacity = '0';
+                    char.style.transform = 'translateY(10px) scale(0.8)';
+                    char.style.fontWeight = 'bold';
+                    text.querySelector('h1').appendChild(char);
+                    
+                    // SSH端口输入效果 - 极速入场动画
+                    gsap.to(char, {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.1,
+                        delay: 0.02 * i,
+                        ease: 'power2.out'
+                    });
+                    
+                    // SSH风格的跳动效果 - 高频极速
+                    if (Math.random() > 0.2) { // 进一步增加跳动频率
+                        gsap.to(char, {
+                            y: '-=6',
+                            duration: 0.1,
+                            delay: 0.02 * i + 0.1,
+                            yoyo: true,
+                            repeat: 1,
+                            ease: 'power2.inOut'
+                        });
+                    }
+                    
+                    // 添加闪烁光标效果
+                    if (i === textContent.length - 1) {
+                        const cursor = document.createElement('span');
+                        cursor.textContent = '█';
+                        cursor.style.display = 'inline-block';
+                        cursor.style.color = '#39C5BB';
+                        cursor.style.marginLeft = '2px';
+                        text.querySelector('h1').appendChild(cursor);
+                        
+                        gsap.to(cursor, {
+                            opacity: 0,
+                            duration: 0.8,
+                            repeat: -1,
+                            yoyo: true,
+                            ease: 'steps(1)'
+                        });
+                    }
+                    
+                    i++;
+                    setTimeout(typeWriter, 30); // 极速打字速度
+                } else {
+                    // 文字完成后添加整体SSH连接成功效果 - 极速版
+                    const chars = text.querySelectorAll('h1 span:not(:last-child)');
+                    chars.forEach((char, index) => {
+                        gsap.to(char, {
+                            y: () => Math.random() > 0.5 ? -2 : 2,
+                            duration: 0.08,
+                            delay: 0.5 + index * 0.01, // 极速延迟
+                            yoyo: true,
+                            repeat: 3,
+                            ease: 'power2.inOut'
+                        });
+                    });
+                }
+            };
+            
+            // 开始打字效果
+            setTimeout(typeWriter, 500);
+            
+            // Logo动画（在文字动画之后）
+            const logo = document.getElementById('main-logo');
+            gsap.fromTo(logo, 
+                { 
+                    opacity: 0,
+                    scale: 0.8,
+                    rotation: -5
+                },
+                { 
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 1.2,
+                    delay: 0.5,
+                    ease: 'elastic.out(1, 0.5)'
+                }
+            );
+        }
+        
+        // 鼠标跟随线条效果
+        const linesContainer = document.getElementById('lines-container');
+        let mouseX = 0, mouseY = 0;
+        let lines = [];
+        const maxLines = 10;
+        
+        // 创建线条
+        function createLine() {
+            const line = document.createElement('div');
+            line.className = 'line';
+            line.style.width = '100px';
+            line.style.height = '1px';
+            line.style.opacity = Math.random() * 0.5 + 0.2;
+            line.style.transform = `rotate(${Math.random() * 360}deg)`;
+            linesContainer.appendChild(line);
+            return line;
+        }
+        
+        // 初始化线条
+        for (let i = 0; i < maxLines; i++) {
+            const line = createLine();
+            lines.push({
+                element: line,
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                angle: Math.random() * 360,
+                speed: Math.random() * 1 + 0.5,
+                length: Math.random() * 100 + 50
+            });
+        }
+        
+        // 更新线条位置
+        function updateLines() {
+            lines.forEach(lineObj => {
+                // 向鼠标方向移动
+                const dx = mouseX - lineObj.x;
+                const dy = mouseY - lineObj.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance > 5) {
+                    lineObj.x += (dx / distance) * lineObj.speed;
+                    lineObj.y += (dy / distance) * lineObj.speed;
+                } else {
+                    // 随机移动
+                    lineObj.x += Math.cos(lineObj.angle) * lineObj.speed;
+                    lineObj.y += Math.sin(lineObj.angle) * lineObj.speed;
+                    
+                    // 边界检查
+                    if (lineObj.x < 0 || lineObj.x > window.innerWidth || 
+                        lineObj.y < 0 || lineObj.y > window.innerHeight) {
+                        lineObj.angle += Math.PI / 2; // 改变方向
+                    }
+                }
+                
+                // 更新线条位置和长度
+                const line = lineObj.element;
+                line.style.left = `${lineObj.x}px`;
+                line.style.top = `${lineObj.y}px`;
+                line.style.width = `${lineObj.length}px`;
+                
+                // 根据与鼠标的距离调整透明度
+                const distToMouse = Math.sqrt(
+                    Math.pow(mouseX - lineObj.x, 2) + 
+                    Math.pow(mouseY - lineObj.y, 2)
+                );
+                const opacity = Math.max(0.1, 1 - distToMouse / 300);
+                line.style.opacity = opacity;
+            });
+            
+            requestAnimationFrame(updateLines);
+        }
+        
+        // 鼠标移动事件
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // 弹幕系统增强版
+        const danmakuContainer = document.getElementById('danmaku-container');
+        
+        // 固定弹幕（直接在代码中定义，不会过期）
+        const fixedDanmakuList = [
+            { text: '欢迎来到MIKUFANS!', color: '#FF6B6B' },
+            { text: 'ロ⊂(゜ ▽゜ )-乾杯~', color: '#4ECDC4' },
+            { text: '把你MikuMiku掉~', color: '#45B7D1' },
+            { text: '至此 我不再独自前行', color: '#96CEB4' },
+            { text: '初音未来万岁！', color: '#FFEAA7' },
+            { text: '公主殿下天下第一！', color: '#DDA0DD' },
+            { text: '39393939', color: '#98D8C8' },
+            { text: '前排支持', color: '#F7DC6F' },
+            { text: '爱了爱了', color: '#BB8FCE' },
+            { text: 'Awesome!', color: '#85C1E9' }
+        ];
+        
+        // 用户弹幕列表（带时间戳，会过期）
+        let userDanmakuList = [];
+        let danmakuSpeed = 10; // 秒
+        let danmakuDensity = 5; // 秒/条
+        let danmakuInterval;
+        const DANMAKU_EXPIRE_TIME = 9 * 60 * 60 * 1000; // 9小时过期时间（毫秒）
+        
+        // 创建弹幕
+        function createDanmaku(danmakuData = null) {
+            const danmaku = document.createElement('div');
+            let content, color;
+            
+            if (danmakuData) {
+                // 指定弹幕内容
+                content = danmakuData.text;
+                color = danmakuData.color || `hsl(${Math.random() * 360}, 70%, 80%)`;
+            } else {
+                // 随机选择弹幕
+                const allDanmaku = [...fixedDanmakuList, ...getValidUserDanmaku()];
+                const selected = allDanmaku[Math.floor(Math.random() * allDanmaku.length)];
+                content = selected.text;
+                color = selected.color || `hsl(${Math.random() * 360}, 70%, 80%)`;
+            }
+            
+            danmaku.className = 'absolute whitespace-nowrap text-white font-bold text-shadow';
+            danmaku.textContent = content;
+            danmaku.style.fontSize = `${Math.random() * 12 + 16}px`;
+            danmaku.style.color = color;
+            danmaku.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+            danmaku.style.right = `-${danmaku.offsetWidth}px`;
+            danmaku.style.opacity = Math.random() * 0.5 + 0.5;
+            danmaku.style.textShadow = '0 0 5px rgba(0,0,0,0.8)';
+            
+            danmakuContainer.appendChild(danmaku);
+            
+            // 强制重绘以获取正确宽度
+            danmaku.offsetWidth;
+            
+            // 动画
+            gsap.to(danmaku, {
+                right: `${window.innerWidth + danmaku.offsetWidth}px`,
+                duration: danmakuSpeed,
+                ease: 'linear',
+                onComplete: () => {
+                    danmaku.remove();
+                }
+            });
+        }
+        
+        // 获取有效的用户弹幕（未过期的）
+        function getValidUserDanmaku() {
+            const now = Date.now();
+            return userDanmakuList.filter(danmaku => 
+                now - danmaku.timestamp < DANMAKU_EXPIRE_TIME
+            );
+        }
+        
+        // 清理过期的用户弹幕
+        function cleanupExpiredDanmaku() {
+            const now = Date.now();
+            const validDanmaku = userDanmakuList.filter(danmaku => 
+                now - danmaku.timestamp < DANMAKU_EXPIRE_TIME
+            );
+            
+            if (validDanmaku.length !== userDanmakuList.length) {
+                userDanmakuList = validDanmaku;
+                saveUserDanmakuToLocal();
+            }
+        }
+        
+        // 开始弹幕
+        function startDanmaku() {
+            if (danmakuInterval) {
+                clearInterval(danmakuInterval);
+            }
+            
+            // 立即创建一条弹幕
+            createDanmaku();
+            
+            // 设置定时器
+            danmakuInterval = setInterval(() => {
+                createDanmaku();
+            }, (11 - danmakuDensity) * 500); // 转换为毫秒，密度越大间隔越短
+        }
+        
+        // 停止弹幕
+        function stopDanmaku() {
+            if (danmakuInterval) {
+                clearInterval(danmakuInterval);
+                danmakuInterval = null;
+            }
+        }
+        
+        // 保存用户弹幕到本地存储
+        function saveUserDanmakuToLocal() {
+            localStorage.setItem('userDanmakuList', JSON.stringify(userDanmakuList));
+        }
+        
+        // 从本地存储加载用户弹幕
+        function loadUserDanmakuFromLocal() {
+            const saved = localStorage.getItem('userDanmakuList');
+            if (saved) {
+                try {
+                    userDanmakuList = JSON.parse(saved);
+                    // 清理过期弹幕
+                    cleanupExpiredDanmaku();
+                } catch (e) {
+                    userDanmakuList = [];
+                }
+            }
+        }
+        
+        // 保存弹幕设置
+        function saveDanmakuSettings() {
+            // 固定弹幕在代码中定义，这里只处理设置
+            danmakuSpeed = 21 - document.getElementById('danmaku-speed').value; // 反向映射，值越大速度越快
+            danmakuDensity = document.getElementById('danmaku-density').value;
+            
+            // 保存设置到localStorage
+            localStorage.setItem('danmakuSpeed', danmakuSpeed);
+            localStorage.setItem('danmakuDensity', danmakuDensity);
+            
+            // 重启弹幕
+            startDanmaku();
+            
+            // 关闭设置面板
+            document.getElementById('danmaku-settings').classList.add('hidden');
+        }
+        
+        // 重置弹幕设置
+        function resetDanmakuSettings() {
+            // 清空用户弹幕
+            userDanmakuList = [];
+            saveUserDanmakuToLocal();
+            
+            // 重置速度和密度
+            danmakuSpeed = 10;
+            danmakuDensity = 5;
+            
+            // 更新界面
+            updateDanmakuListDisplay();
+            document.getElementById('danmaku-speed').value = 21 - danmakuSpeed;
+            document.getElementById('danmaku-density').value = danmakuDensity;
+            
+            saveDanmakuSettings();
+        }
+        
+        // 自定义背景图设置
+        document.getElementById('set-custom-bg').addEventListener('click', () => {
+            const input = document.getElementById('custom-bg-input');
+            const imageUrl = input.value.trim();
+            setCustomBackground(imageUrl);
+            input.value = '';
+        });
+        
+        // 更新弹幕列表显示
+        function updateDanmakuListDisplay() {
+            const validUserDanmaku = getValidUserDanmaku();
+            const text = validUserDanmaku.map(d => d.text).join('\n');
+            document.getElementById('danmaku-list').value = text;
+        }
+        
+        // 加载弹幕设置
+        function loadDanmakuSettings() {
+            const savedSpeed = localStorage.getItem('danmakuSpeed');
+            const savedDensity = localStorage.getItem('danmakuDensity');
+            
+            // 加载用户弹幕
+            loadUserDanmakuFromLocal();
+            
+            // 更新弹幕列表显示
+            updateDanmakuListDisplay();
+            
+            // 加载速度和密度设置
+            if (savedSpeed) {
+                danmakuSpeed = parseFloat(savedSpeed);
+                document.getElementById('danmaku-speed').value = 21 - danmakuSpeed;
+            }
+            
+            if (savedDensity) {
+                danmakuDensity = parseFloat(savedDensity);
+                document.getElementById('danmaku-density').value = danmakuDensity;
+            }
+        }
+        
+        // 按钮点击事件
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    // 添加点击动画效果
+                    gsap.fromTo(link, 
+                        { scale: 0.95 },
+                        { scale: 1, duration: 0.3, ease: 'elastic.out(1, 0.3)' }
+                    );
+                }
+            });
+        });
+        
+        // 后门：双击标题打开弹幕设置
+        document.getElementById('main-text').addEventListener('dblclick', () => {
+            document.getElementById('danmaku-settings').classList.remove('hidden');
+        });
+        
+        // 后门：按Ctrl+D打开弹幕设置
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                document.getElementById('danmaku-settings').classList.toggle('hidden');
+            }
+        });
+        
+        // 关闭弹幕设置
+        document.getElementById('close-danmaku-settings').addEventListener('click', () => {
+            document.getElementById('danmaku-settings').classList.add('hidden');
+        });
+        
+        // 添加单条弹幕（用户互动弹幕）
+        document.getElementById('add-danmaku').addEventListener('click', () => {
+            const input = document.getElementById('danmaku-input');
+            const text = input.value.trim();
+            if (text) {
+                // 创建用户弹幕对象（带时间戳）
+                const userDanmaku = {
+                    text: text,
+                    timestamp: Date.now(),
+                    color: `hsl(${Math.random() * 360}, 70%, 80%)`
+                };
+                
+                // 添加到用户弹幕列表
+                userDanmakuList.push(userDanmaku);
+                saveUserDanmakuToLocal();
+                
+                // 立即显示这条弹幕
+                createDanmaku(userDanmaku);
+                
+                // 更新显示
+                updateDanmakuListDisplay();
+                
+                input.value = '';
+            }
+        });
+        
+        // 回车添加弹幕
+        document.getElementById('danmaku-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('add-danmaku').click();
+            }
+        });
+        
+        // 保存设置
+        document.getElementById('save-danmaku-settings').addEventListener('click', saveDanmakuSettings);
+        
+        // 重置设置
+        document.getElementById('reset-danmaku').addEventListener('click', resetDanmakuSettings);
+        
+        // 窗口大小变化时调整
+        window.addEventListener('resize', () => {
+            // 可以在这里添加响应式调整代码
+        });
+        
+        // 创建二次元风格元素
+        function createAnimeElements() {
+            const container = document.getElementById('anime-elements');
+            
+            // 创建网格
+            const grid = document.createElement('div');
+            grid.className = 'anime-grid';
+            container.appendChild(grid);
+            
+            // 创建光晕
+            for (let i = 0; i < 3; i++) {
+                const glow = document.createElement('div');
+                glow.className = 'anime-glow';
+                glow.style.width = `${Math.random() * 300 + 200}px`;
+                glow.style.height = `${Math.random() * 300 + 200}px`;
+                glow.style.left = `${Math.random() * 100}vw`;
+                glow.style.top = `${Math.random() * 100}vh`;
+                glow.style.animationDelay = `${Math.random() * 4}s`;
+                container.appendChild(glow);
+            }
+            
+            // 创建几何图形
+            const shapes = ['square', 'triangle', 'circle'];
+            for (let i = 0; i < 5; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'anime-shape';
+                
+                const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+                const size = Math.random() * 50 + 20;
+                
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                shape.style.left = `${Math.random() * 100}vw`;
+                shape.style.top = `${Math.random() * 100}vh`;
+                shape.style.animationDelay = `${Math.random() * 5}s`;
+                
+                if (shapeType === 'triangle') {
+                    shape.style.width = '0';
+                    shape.style.height = '0';
+                    shape.style.borderLeft = `${size/2}px solid transparent`;
+                    shape.style.borderRight = `${size/2}px solid transparent`;
+                    shape.style.borderBottom = `${size}px solid rgba(57, 197, 187, 0.2)`;
+                    shape.style.borderTop = 'none';
+                } else if (shapeType === 'circle') {
+                    shape.style.borderRadius = '50%';
+                }
+                
+                container.appendChild(shape);
+            }
+            
+            // 创建粒子
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 3 + 1}px`;
+                particle.style.height = `${Math.random() * 3 + 1}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animation = `particleFloat ${Math.random() * 10 + 10}s linear infinite`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                container.appendChild(particle);
+            }
+        }
+        
+        // 添加粒子浮动动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(0) translateX(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 增强鼠标跟随效果
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // 创建鼠标轨迹粒子
+            if (Math.random() > 0.7) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 4 + 2}px`;
+                particle.style.height = `${Math.random() * 4 + 2}px`;
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                particle.style.opacity = '0.8';
+                particle.style.animation = `particleFade 1s ease-out forwards`;
+                
+                document.getElementById('anime-elements').appendChild(particle);
+                
+                // 移除已完成动画的粒子
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        });
+        
+        // 添加粒子淡出动画
+        const fadeStyle = document.createElement('style');
+        fadeStyle.textContent = `
+            @keyframes particleFade {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(fadeStyle);
+        
+        // 樱花飘落效果
+        function initSakura() {
+            const sakuraContainer = document.getElementById('sakura-container');
+            
+            function createSakura() {
+                const sakura = document.createElement('div');
+                sakura.className = 'sakura';
+                
+                // 随机大小
+                const size = Math.random() * 10 + 5;
+                sakura.style.width = `${size}px`;
+                sakura.style.height = `${size}px`;
+                
+                // 随机位置
+                sakura.style.left = `${Math.random() * 100}vw`;
+                
+                // 随机颜色（粉色系）
+                const hue = Math.random() * 20 + 340; // 粉色范围
+                sakura.style.backgroundColor = `hsl(${hue}, 100%, 90%)`;
+                
+                // 随机形状（圆形或星形）
+                if (Math.random() > 0.5) {
+                    sakura.style.borderRadius = '50%';
+                } else {
+                    // 简单的星形用旋转的方块模拟
+                    sakura.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+                }
+                
+                // 随机动画持续时间
+                const duration = Math.random() * 10 + 10;
+                sakura.style.animationDuration = `${duration}s`;
+                
+                // 随机动画延迟
+                sakura.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // 添加到容器
+                sakuraContainer.appendChild(sakura);
+                
+                // 动画结束后移除
+                setTimeout(() => {
+                    sakura.remove();
+                }, (duration + 5) * 1000);
+            }
+            
+            // 定期创建樱花
+            setInterval(createSakura, 200);
+        }
+        
+        
+        // 自定义背景图功能
+        function setCustomBackground(imageUrl) {
+            if (imageUrl && imageUrl.trim() !== '') {
+                // 添加到背景数组
+                backgrounds.push(`url(${imageUrl})`);
+                // 切换到新背景
+                switchBackground(backgrounds.length - 1);
+                // 保存到本地存储
+                localStorage.setItem('customBackground', imageUrl);
+                alert('自定义背景设置成功！');
+            } else {
+                alert('请输入有效的图片链接！');
+            }
+        }
+        
+        // 从本地存储加载自定义背景
+        const savedCustomBg = localStorage.getItem('customBackground');
+        if (savedCustomBg) {
+            backgrounds.push(`url(${savedCustomBg})`);
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            // 创建二次元风格元素
+            createAnimeElements();
+            
+            // 启动标题动画
+            animateTitle();
+            
+            // 启动线条动画
+            updateLines();
+            
+            // 初始化樱花飘落效果
+            initSakura();
+            
+            // 加载弹幕设置
+            loadDanmakuSettings();
+            
+            // 启动弹幕
+            startDanmaku();
+            
+            // 初始背景
+            switchBackground(currentBgIndex);
+        });
+    </script>
+<script>
+        // 页面加载完成后执行（确保无执行时机问题）
+        window.onload = function() {
+            // 1. 你的字符画 + 文字内容（核心填写区：这里替换你想要的字符画/文字即可）
+            const targetAscii = `
+ __  __   _   _              _____                       
+|  \\/  | (_) | | __  _   _  |  ___|   __ _   _ __    ___ 
+| |\\/| | | | | |/ / | | | | | |_     / _\` | | '_ \\  / __|
+| |  | | | | |   <  | |_| | |  _|   | (_| | | | | | \\__ \\
+|_|  |_| |_| |_|\\_\\  \\__,_| |_|      \\__,_| |_| |_| |___/
+  请不要让我一个人独自前行 , 
+  心怀理想主义继续走下去 ^ ^
+          `;
+            const consoleStyle = `
+                color: #42b983; 
+                font-size: 13px; 
+                font-family: Consolas, Monaco, monospace;
+                font-weight: 500;
+            `;
+
+            // 3. 输出到控制台（核心执行语句，不可修改）
+            console.log('%c' + targetAscii, consoleStyle);
+            
+            // 额外：单独给署名加高亮（可选，让署名更醒目）
+            console.log('%c by MewtyAlnitak ', 'color: #ff7e67; background: #f5f5f5; padding: 2px 8px; border-radius: 4px;');
+        };
+    </script>
+    <script type="text/javascript" id="myhk" src="https://myhkw.cn/api/player/166299859651" key="166299859651" m="1"></script>
+</body></html>
